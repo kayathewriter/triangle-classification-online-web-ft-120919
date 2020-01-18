@@ -1,15 +1,37 @@
-class Triangle 
-#=================properties===================
-  attr_accessor :type
-#=================intialize====================
-  def initialize(s1, s2, s3)
-    if s1 <= 0 || s2 <= 0 || s3 <= 0 || s1+s2 <= s3 || s1+s3 <= s2 || s3+s2 <= s1 then  raise TriangleError
-    elsif s1 == s2 && s2 == s3 then self.type = :equilateral
-    else s1 == s2 || s2 == s3 || s1 == s3 ? self.type = :isosceles : self.type = :scalene end
-  end
-#=================instance=====================
-  def kind
-    self.type
-  end
-#==============================================
+class Triangle
+  attr_accessor :one, :two, :three
+  
+    def initialize (one, two, three)
+        @one = one
+        @two = two
+        @three = three
+    end
+    
+    def kind
+        illegal_triangle
+        
+        if one == two && one == three
+            :equilateral
+        elsif one == two || one == three || two == three
+            :isosceles
+        else
+            :scalene
+        end
+    end
+    
+    def illegal_triangle
+        if one <= 0 || two <= 0 || three <= 0
+            begin
+                raise TriangleError
+            end
+        elsif one == nil || two == nil || three == nil
+            begin
+                raise TriangleError
+            end
+        elsif one + two <= three || one + three <= two || three + two <= one
+            begin
+                raise TriangleError
+            end
+        end
+    end
 end
