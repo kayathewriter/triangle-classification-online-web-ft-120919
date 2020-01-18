@@ -6,16 +6,4 @@ class Triangle
         @two = two
         @three = three
     end
-    
-    def kind
-        illegal_triangle
-        
-        if one == two && one == three
-            :equilateral
-        elsif one == two || one == three || two == three
-            :isosceles
-        else
-            :scalene
-        end
-    end
-  end
+end
